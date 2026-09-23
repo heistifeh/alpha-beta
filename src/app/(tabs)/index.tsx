@@ -4,7 +4,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { AccountCard } from "@/components/AccountCard";
 import { BillerGridItem } from "@/components/BillerGridItem";
-import { HomeHeader } from "@/components/HomeHeader";
 import { QuickActionButton } from "@/components/QuickActionButton";
 import { SkeletonBlock } from "@/components/SkeletonBlock";
 import { StateMessage } from "@/components/StateMessage";
@@ -62,11 +61,6 @@ export default function HomeScreen() {
   return (
     <SafeAreaView className="flex-1 bg-black" edges={["top"]}>
       <ScrollView contentContainerClassName="pb-8" className="flex-1">
-        <HomeHeader
-          user={user.status === "success" ? user.data : null}
-          isLoading={user.status === "loading"}
-        />
-
         <View className="px-4">
           {accountStatus === "loading" || accountStatus === "idle" ? (
             <View className="gap-4 rounded-3xl bg-white/5 p-5">
@@ -90,6 +84,11 @@ export default function HomeScreen() {
               account={account}
               isBalanceVisible={isBalanceVisible}
               onToggleBalanceVisibility={toggleBalanceVisibility}
+              userName={user.status === "success" ? user.data.firstName : undefined}
+              avatarSource={user.status === "success" ? user.data.avatar : undefined}
+              hasUnreadNotifications={
+                user.status === "success" ? user.data.hasUnreadNotifications : false
+              }
             />
           ) : (
             <View className="rounded-3xl bg-white/5 p-5">
