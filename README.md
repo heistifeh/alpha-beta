@@ -1,8 +1,31 @@
-# Welcome to your Expo app 👋
+# Alpha Beta
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile banking app built with Expo and React Native. It has a home screen, account details, cards, wallets and a services/billers screen, all using mock data to simulate a real API.
 
-## Get started
+## How it was built
+
+I started the project with Expo (using the default Expo Router template), then set it up the way I wanted:
+
+- Installed NativeWind (`nativewind@^4.2.7`) with `tailwindcss@^3.4.19` for styling with Tailwind classes in React Native.
+- Installed Zustand (`zustand@^5.0.15`) for state management.
+- Used Expo Router for navigation, with screens organized as tabs under `src/app/(tabs)`.
+- Used `@expo/vector-icons` for icons and `expo-image`, `expo-linear-gradient`, `expo-glass-effect` for parts of the UI.
+
+## Project structure
+
+- `src/app` - screens and layouts (Expo Router file-based routing)
+- `src/components` - reusable UI components
+- `src/store` - Zustand stores
+- `src/services` - mock service functions that simulate API calls with a network delay
+- `src/data` - the mock data used by the services
+- `src/types` - shared TypeScript types
+- `src/utils` - helper functions
+
+## Mock data / API
+
+There is no real backend. The `src/services` folder has functions like `getCurrentUser`, `getAccount`, `getRecentTransactions` and `getBillers` that return data from `src/data` after a short simulated delay, so the app behaves like it is talking to a live API.
+
+## Running the app
 
 1. Install dependencies
 
@@ -16,41 +39,18 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+3. From the terminal output you can open the app in:
+   - a development build
+   - an Android emulator
+   - an iOS simulator
+   - Expo Go
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+No environment variables or API keys are needed since the app runs entirely on mock data.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Requirements
 
-## Get a fresh project
+- Node.js and npm
+- Expo CLI (comes through `npx`, no global install needed)
+- For iOS: a Mac with Xcode installed if you want to run the iOS simulator, or the Expo Go app on a physical device
+- For Android: Android Studio with an emulator set up, or the Expo Go app on a physical device
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
